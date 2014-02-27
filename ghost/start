@@ -1,0 +1,9 @@
+#!/bin/bash
+set -e
+
+if [ ! "$(ls -A content)" ]; then
+  cp -R content.example/* content/
+  chown -R ghost:ghost /app
+fi
+
+exec sudo -E -u ghost npm start --production
